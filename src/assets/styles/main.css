@@ -1,0 +1,9 @@
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+#app {
+  height: 100vh;
+  padding: 16px;
+}
