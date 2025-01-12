@@ -6,7 +6,7 @@ import type { ICreateBabyRes } from './types/baby'
 import BabiesSeenTodayList from './components/BabiesSeenTodayList.vue'
 
 interface BabiesSeenTodayListRef {
-  addNewBabyRef: (country: string) => void
+  addNewBabyRef: (country: string, rarity: string, flagFile: string) => void
 }
 
 const childRef = ref<BabiesSeenTodayListRef | null>(null)
@@ -21,7 +21,11 @@ const generateNewBaby = async () => {
     .finally(() => (isFetchingBaby.value = false))
 
   if (childRef.value && baby.value) {
-    childRef.value.addNewBabyRef(baby.value.country)
+    childRef.value.addNewBabyRef(
+      baby.value.country,
+      baby.value.rarity,
+      import.meta.env.VITE_ASSETS_URL + '/' + baby.value?.flag_file,
+    )
   }
 }
 </script>
